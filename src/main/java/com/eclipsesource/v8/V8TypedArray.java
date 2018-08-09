@@ -33,6 +33,11 @@ public class V8TypedArray extends V8Array {
         super(v8, new V8ArrayData(buffer, offset, size, type));
     }
 
+    @Override
+    public void release() {
+        setWeak();
+    }
+
     private V8TypedArray(final V8 v8) {
         super(v8);
     }

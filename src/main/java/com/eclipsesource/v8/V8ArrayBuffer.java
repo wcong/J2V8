@@ -41,6 +41,11 @@ public class V8ArrayBuffer extends V8Value {
         byteBuffer.order(ByteOrder.nativeOrder());
     }
 
+    @Override
+    public void release() {
+        setWeak();
+    }
+
     /**
      * Creates a new V8ArrayBuffer with the provided ByteBuffer as the backing store.
      * The ByteBuffer must be allocated as a DirectBuffer. If the ByteBuffer is not
