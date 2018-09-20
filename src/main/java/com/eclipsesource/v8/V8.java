@@ -267,6 +267,7 @@ public class V8 extends V8Object {
         super(null);
         released = false;
         v8RuntimePtr = _createIsolate(globalAlias);
+        acquireLock(v8RuntimePtr);
         locker = new V8Locker(this);
         checkThread();
         objectHandle = _getGlobalObject(v8RuntimePtr);
@@ -355,6 +356,7 @@ public class V8 extends V8Object {
             return;
         }
         checkThread();
+        acquireLock(v8RuntimePtr);
         try {
             notifyReleaseHandlers(this);
         } finally {
